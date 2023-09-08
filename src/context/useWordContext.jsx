@@ -2,11 +2,8 @@ import { useState, useEffect, useMemo, useCallback, useContext, createContext } 
 import useFetchWord  from '../hooks/useFetchWord';
 import  BODY_PARTS  from '../utils/body';
 
-import { useQuery } from '@tanstack/react-query'
 
-// const API_ENDPOINT = 'https://random-word-api.vercel.app/api?words=1';
 const WordContext = createContext();
-
 
 const useWordContext = () => {
   return useContext(WordContext);
@@ -14,11 +11,8 @@ const useWordContext = () => {
 
 
 const WordProvider = ({ children }) => {
-
-  const [guessedLetters, setGuessedLetters] = useState(new Set());
   const { word, isLoading, isError, refetch } = useFetchWord();
-  console.log('word ', word);
-
+  const [guessedLetters, setGuessedLetters] = useState(new Set());
   
   const [correctLetters, incorrectLetters, isGameOver] = useMemo(() => {
     const wordSet = new Set(word);
