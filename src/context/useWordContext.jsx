@@ -103,7 +103,7 @@ const WordProvider = ({ children }) => {
     setGuessedLetters(new Set());
   };
 
-  const context = {
+  const value = {
     word,
     numOfIncorrectGuess: incorrectLetters.size,
     hasFoundWinner,
@@ -118,7 +118,7 @@ const WordProvider = ({ children }) => {
   };
 
   return (
-    <WordContext.Provider value={context}>
+    <WordContext.Provider value={value}>
       {children}
     </WordContext.Provider>
   )
